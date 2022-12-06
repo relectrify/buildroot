@@ -129,8 +129,10 @@ F:	package/libxmlrpc/
 F:	package/python-docopt/
 
 N:	Anand Gadiyar <gadiyar@ti.com>
+F:	board/ti/am64x_sk/
 F:	boot/ti-k3-image-gen/
 F:	boot/ti-k3-r5-loader/
+F:	configs/am64x_sk_defconfig
 
 N:	André Zwing <nerv@dawncrow.de>
 F:	package/libkrb5/
@@ -2998,8 +3000,10 @@ N:	Wojciech Niziński <niziak@spox.org>
 F:	package/fwup/
 
 N:	Xuanhao Shi <X15000177@gmail.com>
+F:	board/ti/am64x_sk/
 F:	boot/ti-k3-image-gen/
 F:	boot/ti-k3-r5-loader/
+F:	configs/am64x_sk_defconfig
 
 N:	Yair Ben Avraham <yairba@protonmail.com>
 F:	package/casync/
