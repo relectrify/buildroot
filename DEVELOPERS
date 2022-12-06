@@ -129,6 +129,7 @@ F:	package/libxmlrpc/
 F:	package/python-docopt/
 
 N:	Anand Gadiyar <gadiyar@ti.com>
+F:	boot/ti-k3-image-gen/
 F:	boot/ti-k3-r5-loader/
 
 N:	André Zwing <nerv@dawncrow.de>
@@ -2997,6 +2998,7 @@ N:	Wojciech Niziński <niziak@spox.org>
 F:	package/fwup/
 
 N:	Xuanhao Shi <X15000177@gmail.com>
+F:	boot/ti-k3-image-gen/
 F:	boot/ti-k3-r5-loader/
 
 N:	Yair Ben Avraham <yairba@protonmail.com>
