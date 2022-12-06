@@ -1,0 +1,50 @@
+config BR2_TARGET_TI_K3_IMAGE_GEN
+	bool "ti-k3-image-gen"
+	select BR2_TARGET_TI_K3_R5_LOADER
+	help
+	  Use TI's k3-image-gen to build a separate bare metal
+	  boot binary from a separate SPL that is running on
+	  the R5 core. Currently supports version 08.06.00.007
+	  as default.
+
+	  https://git.ti.com/cgit/k3-image-gen/k3-image-gen/
+
+if BR2_TARGET_TI_K3_IMAGE_GEN
+choice
+	prompt "SoC firmware type for image gen"
+	default BR2_TARGET_TI_K3_IMAGE_GEN_FW_TYPE_TIFS
+
+config BR2_TARGET_TI_K3_IMAGE_GEN_FW_TYPE_TIFS
+	bool "Firmware type TIFS"
+	help
+	  Use firmware type TIFS for SoCs like AM62x and
+	  AM62Ax.
+
+config BR2_TARGET_TI_K3_IMAGE_GEN_FW_TYPE_TISCI
+	bool "Firmware type TISCI"
+	help
+	  Use firmware type TISCI for SoCs like AM64x and
+	  AM65x.
+
+endchoice
+
+config BR2_TARGET_TI_K3_IMAGE_GEN_SOC
+	string "SoC type for image gen"
+	help
+	  The target SoC option for image gen.
+	  For example, "am64x" for AM64x boards.
+
+config BR2_TARGET_TI_K3_IMAGE_GEN_SOC_TYPE
+	string "SoC security type for image gen"
+	help
+	  The security type option for image gen.
+	  Valid options are "gp" for Gerneral Purpose devices,
+	  "hs-fs" for High Security - Field Securable devices, or
+	  "hs" for High Security - Security Enforcing devices.
+
+config BR2_TARGET_TI_K3_IMAGE_GEN_CONFIG
+	string "CONFIG type for image gen"
+	help
+	  The board config option for image gen.
+	  Usually "sk" or "evm".
+endif
