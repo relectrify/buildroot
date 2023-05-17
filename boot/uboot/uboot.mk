@@ -184,6 +184,22 @@ UBOOT_DEPENDENCIES += optee-os
 UBOOT_MAKE_OPTS += TEE=$(BINARIES_DIR)/tee.elf
 endif
 
+ifeq ($(BR2_TARGET_UBOOT_NEEDS_TI_K3_DM),y)
+# Currently supports the FW from Git tag 08.06.00.006 by default
+TI_K3_DM_VERSION = 340194800a581baf976360386dfc7b5acab8d948
+TI_K3_DM_SITE = https://git.ti.com/processor-firmware/ti-linux-firmware/blobs/raw/$(TI_K3_DM_VERSION)/ti-dm/$(BR2_TARGET_UBOOT_TI_K3_DM_SOC)
+TI_K3_DM_SOURCE = ipc_echo_testb_mcu1_0_release_strip.xer5f
+# This is not really nice but disable the hash check for the DM FW file. Main
+# reason is all those DM FW files for different SoCs have the same(!) name in
+# the Git repository they reside in, so it would be more difficult to distinguish
+# between them for hash checking purposes. To work around this let's just
+# rely and trust the official Git repo at ti.com is known-good which is also
+# accessed through a secure transport.
+BR_NO_CHECK_HASH_FOR += $(TI_K3_DM_SOURCE)
+UBOOT_EXTRA_DOWNLOADS = $(TI_K3_DM_SITE)/$(TI_K3_DM_SOURCE)
+UBOOT_MAKE_OPTS += DM=$(UBOOT_DL_DIR)/$(TI_K3_DM_SOURCE)
+endif
+
 ifeq ($(BR2_TARGET_UBOOT_NEEDS_OPENSBI),y)
 UBOOT_DEPENDENCIES += opensbi
 UBOOT_MAKE_OPTS += OPENSBI=$(BINARIES_DIR)/fw_dynamic.bin
