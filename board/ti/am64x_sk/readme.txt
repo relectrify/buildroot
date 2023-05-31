@@ -12,6 +12,22 @@ $ make am64x_sk_defconfig
 Optional: modify the configuration:
 $ make menuconfig
 
+Required setup step for High Security HS-FS and HS-SE SoC variants:
+
+To allow the image signing process for various firmware artifacts to
+work the build process for HS-FS and HS-SE device variants is using
+an external 'core-secdev-k3' package which can be obtained from
+https://git.ti.com/cgit/security-development-tools/core-secdev-k3.
+To prepare building for those device variants create a local copy of
+the 'core-secdev-k3' and export its location through the
+TI_SECURE_DEV_PKG environmental variable. Use the package as-is for
+HS-FS device variants such as populated on the SK-AM64B board, or
+customize this package with your private signing keys when using a
+HS-SE device variant.
+
+$ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git
+$ export TI_SECURE_DEV_PKG=$PWD/core-secdev-k3
+
 Build:
 $ make
 
