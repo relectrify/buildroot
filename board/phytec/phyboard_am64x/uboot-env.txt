@@ -1,0 +1,15 @@
+bootdelay=2
+mmcdev=1
+bootpart=2
+console=ttyS2,115200n8
+name_kern=/boot/Image
+fdtfile=/boot/k3-am642-phyboard-electra-rdk.dtb
+bootcmd=run args_all; run args_mmc; run get_kern_mmc; run get_fdt_mmc; run run_kern
+args_all=setenv optargs earlycon=ns16550a,mmio32,0x02800000
+args_mmc=run finduuid; setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw
+run_kern=booti ${loadaddr} - ${fdtaddr}
+get_kern_mmc=load mmc ${mmcdev}:${bootpart} ${loadaddr} ${name_kern}
+get_fdt_mmc=load mmc ${mmcdev}:${bootpart} ${fdtaddr} ${fdtfile}
+finduuid=part uuid mmc ${mmcdev}:${bootpart} uuid
+fdtaddr=0x88000000
+loadaddr=0x82000000
