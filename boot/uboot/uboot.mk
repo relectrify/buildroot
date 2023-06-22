@@ -186,6 +186,16 @@ UBOOT_DEPENDENCIES += optee-os
 UBOOT_MAKE_OPTS += TEE=$(BINARIES_DIR)/tee.elf
 endif
 
+ifneq ($(TI_CORE_SECDEV_K3_INSTALL_DIR),)
+# Only set TI_SECURE_DEV_PKG make option if not already defined in the
+# environment, thus allowing the user to unconditionally override this
+# setting with a custom location on their build machine containing their
+# private keys, etc.
+ifeq ($(TI_SECURE_DEV_PKG),)
+UBOOT_MAKE_OPTS += TI_SECURE_DEV_PKG=$(TI_CORE_SECDEV_K3_INSTALL_DIR)
+endif
+endif
+
 ifeq ($(BR2_TARGET_UBOOT_NEEDS_TI_K3_DM),y)
 # Currently supports the FW from Git tag 08.06.00.006 by default
 TI_K3_DM_VERSION = 340194800a581baf976360386dfc7b5acab8d948

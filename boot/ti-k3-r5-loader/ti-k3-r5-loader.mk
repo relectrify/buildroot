@@ -67,6 +67,16 @@ TI_K3_R5_LOADER_MAKE_OPTS = \
 	HOSTCC="$(HOSTCC) $(subst -I/,-isystem /,$(subst -I /,-isystem /,$(HOST_CFLAGS)))" \
 	HOSTLDFLAGS="$(HOST_LDFLAGS)"
 
+ifneq ($(TI_CORE_SECDEV_K3_INSTALL_DIR),)
+# Only set TI_SECURE_DEV_PKG make option if not already defined in the
+# environment, thus allowing the user to unconditionally override this
+# setting with a custom location on their build machine containing their
+# private keys, etc.
+ifeq ($(TI_SECURE_DEV_PKG),)
+TI_K3_R5_LOADER_MAKE_OPTS += TI_SECURE_DEV_PKG=$(TI_CORE_SECDEV_K3_INSTALL_DIR)
+endif
+endif
+
 define TI_K3_R5_LOADER_BUILD_CMDS
 	$(TARGET_CONFIGURE_OPTS) $(TI_K3_R5_LOADER_MAKE) -C $(@D) $(TI_K3_R5_LOADER_MAKE_OPTS)
 endef

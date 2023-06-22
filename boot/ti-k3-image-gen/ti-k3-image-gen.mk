@@ -70,6 +70,16 @@ TI_K3_IMAGE_GEN_MAKE_OPTS = \
 	O=$(@D)/tmp \
 	BIN_DIR=$(@D)
 
+ifneq ($(TI_CORE_SECDEV_K3_INSTALL_DIR),)
+# Only set TI_SECURE_DEV_PKG make option if not already defined in the
+# environment, thus allowing the user to unconditionally override this
+# setting with a custom location on their build machine containing their
+# private keys, etc.
+ifeq ($(TI_SECURE_DEV_PKG),)
+TI_K3_IMAGE_GEN_MAKE_OPTS += TI_SECURE_DEV_PKG=$(TI_CORE_SECDEV_K3_INSTALL_DIR)
+endif
+endif
+
 define TI_K3_IMAGE_GEN_BUILD_CMDS
 	$(TI_K3_IMAGE_GEN_MAKE) -C $(@D) $(TI_K3_IMAGE_GEN_MAKE_OPTS)
 endef

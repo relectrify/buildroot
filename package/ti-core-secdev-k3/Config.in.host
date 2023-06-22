@@ -1,0 +1,11 @@
+config BR2_PACKAGE_HOST_TI_CORE_SECDEV_K3
+	bool "host ti-core-secdev-k3"
+	help
+	  ti-core-secdev-k3 is used to provide binary image signing
+	  tools and keys to the build process needed to build boot
+	  artifacts for the secure boot flow on TI K3 platform
+	  "High Security" SoCs (device variants "HS-FS" and "HS-SE").
+	  This package is not needed building for "General Purpose"
+	  ("GP") SoC variants.
+
+	  https://git.ti.com/cgit/security-development-tools/core-secdev-k3
