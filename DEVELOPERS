@@ -129,9 +129,11 @@ F:	package/libxmlrpc/
 F:	package/python-docopt/
 
 N:	Anand Gadiyar <gadiyar@ti.com>
+F:	board/ti/am62x_sk/
 F:	board/ti/am64x_sk/
 F:	boot/ti-k3-image-gen/
 F:	boot/ti-k3-r5-loader/
+F:	configs/am62x_sk_defconfig
 F:	configs/am64x_sk_defconfig
 
 N:	André Zwing <nerv@dawncrow.de>
@@ -3072,9 +3074,11 @@ F:	package/opencv4
 F:	package/opencv4-contrib
 
 N:	Xuanhao Shi <X15000177@gmail.com>
+F:	board/ti/am62x_sk/
 F:	board/ti/am64x_sk/
 F:	boot/ti-k3-image-gen/
 F:	boot/ti-k3-r5-loader/
+F:	configs/am62x_sk_defconfig
 F:	configs/am64x_sk_defconfig
 
 N:	Yair Ben Avraham <yairba@protonmail.com>
