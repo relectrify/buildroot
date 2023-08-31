@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-TI_K3_IMAGE_GEN_VERSION = 08.06.00.007
+TI_K3_IMAGE_GEN_VERSION = 09.00.00.001
 TI_K3_IMAGE_GEN_SITE = https://git.ti.com/cgit/k3-image-gen/k3-image-gen/snapshot
 TI_K3_IMAGE_GEN_SOURCE = k3-image-gen-$(TI_K3_IMAGE_GEN_VERSION).tar.gz
 TI_K3_IMAGE_GEN_LICENSE = BSD-3-Clause
@@ -37,9 +37,7 @@ endif
 
 TI_K3_IMAGE_GEN_CONFIG = $(call qstrip,$(BR2_TARGET_TI_K3_IMAGE_GEN_CONFIG))
 
-# This hash comes from the Makefile in ti-k3-image-gen and corresponds to
-# FW from Git tag 08.06.00.006
-TI_K3_SYSFW_VERSION = 340194800a581baf976360386dfc7b5acab8d948
+TI_K3_SYSFW_VERSION = 09.00.00.008
 TI_K3_SYSFW_SITE = https://git.ti.com/processor-firmware/ti-linux-firmware/blobs/raw/$(TI_K3_SYSFW_VERSION)/ti-sysfw
 ifeq ($(TI_K3_IMAGE_GEN_SOC_TYPE),gp)
 TI_K3_SYSFW_SOURCE = \
