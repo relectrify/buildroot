@@ -14,6 +14,6 @@ sha256  cfee8679183577392b513b317a4d9a6af47cde9a59ecbad758704e4bec38196c  ti-sci
 sha256  8760b70cc18cd5921d634ce226122aed5a28d64857d90f6ede40f2383dabd169  ti-sci-firmware-am64x-hs-enc.bin
 sha256  1e78b106a8c7acd1641863ef86946e0d7272ad9b2d0e7ce451936d36a14e70e7  ti-sci-firmware-am64x_sr2-hs-cert.bin
 sha256  c626bacd4abfbe4de1133b72568394a2e20dbe9a1623a3e77bae9f000e743bb4  ti-sci-firmware-am64x_sr2-hs-enc.bin
-sha256  a6f7063cc9f2bf4d9db3a29cb5eb23165ca77e24935fbcaae443f49aefa556a7  ti-sci-firmware-am64x_sr2-hs-fs-cert.bin
-sha256  5af02065cb0a584819bd534e57271227f0cae74637a4775449a30e444026bd50  ti-sci-firmware-am64x_sr2-hs-fs-enc.bin
+sha256  50a6a7ebdba24d7ecf41f7bfa82bec6c04d0420714b768721ba0bb256d5fb601  ti-sci-firmware-am64x_sr2-hs-fs-cert.bin
+sha256  ec48a716f45bd50d0706ecd7842355d01d8258c96eb248d29b97a4dc1faa4db3  ti-sci-firmware-am64x_sr2-hs-fs-enc.bin
 

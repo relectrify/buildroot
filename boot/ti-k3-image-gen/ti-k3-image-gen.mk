@@ -37,7 +37,7 @@ endif
 
 TI_K3_IMAGE_GEN_CONFIG = $(call qstrip,$(BR2_TARGET_TI_K3_IMAGE_GEN_CONFIG))
 
-TI_K3_SYSFW_VERSION = 09.00.00.008
+TI_K3_SYSFW_VERSION = 09.01.00.005
 TI_K3_SYSFW_SITE = https://git.ti.com/processor-firmware/ti-linux-firmware/blobs/raw/$(TI_K3_SYSFW_VERSION)/ti-sysfw
 ifeq ($(TI_K3_IMAGE_GEN_SOC_TYPE),gp)
 TI_K3_SYSFW_SOURCE = \
