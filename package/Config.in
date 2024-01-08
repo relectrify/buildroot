@@ -1538,6 +1538,7 @@ menu "Crypto"
 	source "package/ustream-ssl/Config.in"
 	source "package/wolfssl/Config.in"
 	source "package/wolftpm/Config.in"
+	source "package/minisign/Config.in"
 endmenu
 
 menu "Database"
