@@ -164,6 +164,15 @@ UBOOT_MAKE_OPTS += \
 	HOSTLDFLAGS="$(HOST_LDFLAGS)" \
 	$(call qstrip,$(BR2_TARGET_UBOOT_CUSTOM_MAKEOPTS))
 
+ifneq ($(TI_SECURE_DEV_PKG),)
+# TI K3 HS devices need ATF and TEE signed
+UBOOT_PRE_BUILD_HOOKS += UBOOT_K3_SIGN
+define UBOOT_K3_SIGN
+	$(TI_SECURE_DEV_PKG)/scripts/secure-binary-image.sh $(BINARIES_DIR)/bl31.bin $(BINARIES_DIR)/bl31.bin.signed
+	$(TI_SECURE_DEV_PKG)/scripts/secure-binary-image.sh $(BINARIES_DIR)/tee-pager_v2.bin $(BINARIES_DIR)/tee-pager_v2.bin.signed
+endef
+endif
+
 ifeq ($(BR2_TARGET_UBOOT_NEEDS_ATF_BL31),y)
 UBOOT_DEPENDENCIES += arm-trusted-firmware
 ifeq ($(BR2_TARGET_UBOOT_NEEDS_ATF_BL31_ELF),y)
