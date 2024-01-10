@@ -171,6 +171,8 @@ define UBOOT_K3_SIGN
 	$(TI_SECURE_DEV_PKG)/scripts/secure-binary-image.sh $(BINARIES_DIR)/bl31.bin $(BINARIES_DIR)/bl31.bin.signed
 	$(TI_SECURE_DEV_PKG)/scripts/secure-binary-image.sh $(BINARIES_DIR)/tee-pager_v2.bin $(BINARIES_DIR)/tee-pager_v2.bin.signed
 endef
+# TI K3 HS build generates a signed image
+UBOOT_BINS += u-boot.img_HS
 endif
 
 ifeq ($(BR2_TARGET_UBOOT_NEEDS_ATF_BL31),y)
