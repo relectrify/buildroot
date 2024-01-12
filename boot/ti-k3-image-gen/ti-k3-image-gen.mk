@@ -40,6 +40,7 @@ define TI_K3_IMAGE_GEN_BUILD_CMDS
 	$(BR2_MAKE) -C $(@D) \
 		SOC=$(TI_K3_IMAGE_GEN_SOC) \
 		SOC_TYPE=$(TI_K3_IMAGE_GEN_SECTYPE) \
+		KEY=$(K3_KEY) \
 		CONFIG=evm \
 		CROSS_COMPILE=$(HOST_DIR)/bin/arm-none-eabi- \
 		SBL=$(BINARIES_DIR)/r5-u-boot-spl.bin \
