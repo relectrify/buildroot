@@ -20,10 +20,11 @@ LVM2_MAKE = $(MAKE1)
 LVM2_CONF_OPTS += \
 	--enable-write_install \
 	--enable-pkgconfig \
-	--enable-cmdlib \
-	--enable-dmeventd \
+	--disable-cmdlib \
+	--disable-dmeventd \
 	--disable-nls \
-	--with-symvers=no
+	--with-symvers=no \
+	--enable-static_link
 
 LVM2_DEPENDENCIES += host-pkgconf
 
