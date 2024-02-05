@@ -3,12 +3,12 @@
 DAEMON="tee-supplicant"
 PIDFILE="/var/run/$DAEMON.pid"
 
-DAEMON_ARGS="-d /dev/teepriv0"
+DAEMON_ARGS="/dev/teepriv0"
 
 start() {
 	printf 'Starting %s: ' "$DAEMON"
 	# shellcheck disable=SC2086 # we need the word splitting
-	start-stop-daemon -S -q -p "$PIDFILE" -x "/usr/sbin/$DAEMON" \
+	start-stop-daemon -S -q -b -m -p "$PIDFILE" -x "/usr/sbin/$DAEMON" \
 		-- $DAEMON_ARGS
 	status=$?
 	if [ "$status" -eq 0 ]; then
