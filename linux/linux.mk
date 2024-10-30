@@ -185,7 +185,7 @@ endif
 # sanitize the arguments passed from user space in registers.
 # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=82435
 ifeq ($(BR2_TOOLCHAIN_GCC_AT_LEAST_8),y)
-LINUX_CFLAGS += -Wno-attribute-alias
+LINUX_KCFLAGS += -Wno-attribute-alias
 endif
 
 # Disable FDPIC if enabled by default in toolchain
@@ -195,6 +195,16 @@ endif
 
 ifeq ($(BR2_LINUX_KERNEL_DTB_OVERLAY_SUPPORT),y)
 LINUX_MAKE_ENV += DTC_FLAGS=-@
+endif
+
+# optimise for zen3
+ifeq ($(BR2_LINUX_KERNEL_ZNVER3),y)
+LINUX_KCFLAGS += -march=znver3 -mtune=znver3
+LINUX_MAKE_ENV += KCPPFLAGS='-march=znver3 -mtune=znver3'
+endif
+
+ifneq ($(LINUX_KCFLAGS),)
+LINUX_MAKE_ENV += KCFLAGS='$(LINUX_KCFLAGS)'
 endif
 
 # Get the real Linux version, which tells us where kernel modules are
