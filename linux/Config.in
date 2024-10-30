@@ -520,6 +520,9 @@ source "linux/Config.ext.in"
 # Linux tools
 source "package/linux-tools/Config.in"
 
+config BR2_LINUX_KERNEL_ZNVER3
+	bool "Optimise for Zen3"
+
 endif # BR2_LINUX_KERNEL
 
 endmenu
