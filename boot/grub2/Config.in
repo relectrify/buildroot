@@ -40,6 +40,13 @@ menuconfig BR2_TARGET_GRUB2
 
 if BR2_TARGET_GRUB2
 
+config BR2_TARGET_GRUB2_GRUB_PROTECT
+	bool "grub protect"
+	depends on BR2_PACKAGE_LIBTASN1
+	help
+	  Select this option to add libtasn1 as a target dependency
+	  so that grub-protect is built for target.
+
 config BR2_TARGET_GRUB2_HAS_LEGACY_BOOT
 	bool
 

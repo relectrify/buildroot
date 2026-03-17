@@ -213,6 +213,10 @@ define GRUB2_INSTALL_IMAGES_CMDS
 	)
 endef
 
+ifeq ($(BR2_TARGET_GRUB2_GRUB_PROTECT),y)
+GRUB2_DEPENDENCIES += libtasn1
+endif
+
 ifeq ($(BR2_TARGET_GRUB2_INSTALL_TOOLS),y)
 define GRUB2_INSTALL_TARGET_CMDS
 	$(foreach tuple, $(GRUB2_TUPLES-y), \
