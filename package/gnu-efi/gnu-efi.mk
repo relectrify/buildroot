@@ -27,6 +27,12 @@ else ifeq ($(BR2_RISCV_64),y)
 GNU_EFI_PLATFORM = riscv64
 endif
 
+ifeq ($(HOSTARCH),x86)
+HOST_GNU_EFI_PLATFORM = ia32
+else
+HOST_GNU_EFI_PLATFORM = $(HOSTARCH)
+endif
+
 GNU_EFI_MAKE_OPTS = \
 	ARCH=$(GNU_EFI_PLATFORM) \
 	CROSS_COMPILE="$(TARGET_CROSS)" \
@@ -41,4 +47,27 @@ define GNU_EFI_INSTALL_STAGING_CMDS
 		INSTALLROOT=$(STAGING_DIR) install
 endef
 
+define HOST_GNU_EFI_BUILD_CMDS
+	$(HOST_MAKE_ENV) $(MAKE) -C $(@D) \
+		CC="$(HOSTCC)" \
+		LD="$(HOSTLD)" \
+		AR="$(HOSTAR)" \
+		AS="$(HOSTAS)" \
+		PREFIX=$(HOST_DIR) \
+		ARCH=$(HOST_GNU_EFI_PLATFORM)
+endef
+
+define HOST_GNU_EFI_INSTALL_CMDS
+	$(HOST_MAKE_ENV) $(MAKE) -C $(@D) \
+		CC="$(HOSTCC)" \
+		LD="$(HOSTLD)" \
+		AR="$(HOSTAR)" \
+		AS="$(HOSTAS)" \
+		INSTALLROOT=$(HOST_DIR) \
+		PREFIX= \
+		ARCH=$(HOST_GNU_EFI_PLATFORM) \
+		install
+endef
+
 $(eval $(generic-package))
+$(eval $(host-generic-package))

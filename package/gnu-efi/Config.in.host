@@ -1,0 +1,3 @@
+config BR2_PACKAGE_HOST_GNU_EFI_ARCH_SUPPORTS
+    bool "host gnu-efi"
+    default y if BR2_HOSTARCH = "x86_64" || BR2_HOSTARCH = "aarch64"
